@@ -29,7 +29,7 @@ class SHRestClient{
         
     }
     
-    static func login(email: String, password: String, completion:@escaping (Result<User>)->Void) {
-        postRequest(route: EndPoints.login(email: email, password: password), completion: completion)
+    static func getNewsFeed(completion:@escaping (Result<NewsResponse>)->Void) {
+        getRequest(route: EndPoints.getNewsFeed, completion: completion)
     }
 }
