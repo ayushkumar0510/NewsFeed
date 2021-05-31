@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     
     func setUpView() {
         
+        navigationItem.title = "Headlines"
         tableViewNews.delegate = self
         tableViewNews.dataSource = self
         getNewsData()
@@ -29,7 +30,10 @@ class ViewController: UIViewController {
     
     func getNewsData() {
         
+        UIHelper.showProgressHud(inView: self.view)
         apiManager.getNewsList { (res) in
+            
+            UIHelper.hideProgressHud()
             self.newsList = res.value ?? NewsResponse()
             self.tableViewNews.reloadData()
             print(res)
@@ -52,6 +56,15 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let dataArticle = newsList.articles?[indexPath.row]
+        
+        let vc = storyboard?.instantiateViewController(identifier: "DetailVC") as! DetailViewController
+        vc.data = dataArticle ?? Article()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
