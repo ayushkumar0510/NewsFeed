@@ -20,6 +20,13 @@ class ViewController: UIViewController {
         self.setUpView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        if self.newsList.articles?.count != 0 {
+            UIHelper.animate(count: self.newsList.articles?.count ?? 0, tableView: self.tableViewNews)
+        }
+    }
+    
     func setUpView() {
         
         navigationItem.title = "Headlines"
@@ -31,12 +38,29 @@ class ViewController: UIViewController {
     func getNewsData() {
         
         UIHelper.showProgressHud(inView: self.view)
-        apiManager.getNewsList { (res) in
+        
+        if(NetworkState().isConnected) {
+            
+            apiManager.getNewsList { (res) in
+                
+                UIHelper.hideProgressHud()
+                self.newsList = res.value ?? NewsResponse()
+                if UserDefaults.standard.isFirstTime() == false {
+                    DBManager.addContentIdToDB(arrayList: self.newsList.articles)
+                    UserDefaults.standard.setFirstTime()
+                }
+                DBManager.addContentIdToDB(arrayList: self.newsList.articles)
+                self.tableViewNews.reloadData()
+                UIHelper.animate(count: self.newsList.articles?.count ?? 0, tableView: self.tableViewNews)
+                print(res)
+            }
+        } else {
             
             UIHelper.hideProgressHud()
-            self.newsList = res.value ?? NewsResponse()
+            let article = DBManager.getArticleFromDB()
+            self.newsList.articles = article
             self.tableViewNews.reloadData()
-            print(res)
+            UIHelper.animate(count: self.newsList.articles?.count ?? 0, tableView: self.tableViewNews)
         }
     }
 }
@@ -50,6 +74,7 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewsTableViewCell") as! NewsTableViewCell
+        cell.selectionStyle = .none
         cell.lblNews.text = newsList.articles?[indexPath.row].title
         return cell
     }

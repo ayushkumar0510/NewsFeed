@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2A4A14FF2664ADC60085F968 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4A14FE2664ADC60085F968 /* DetailViewController.swift */; };
 		2A4A15032664B0940085F968 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4A15022664B0940085F968 /* UIHelper.swift */; };
+		2A4A150B2664B70D0085F968 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4A150A2664B70D0085F968 /* DBManager.swift */; };
+		2A4A150E2664C1400085F968 /* UserDefaultExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4A150D2664C1400085F968 /* UserDefaultExtension.swift */; };
+		2A4A15122664C3300085F968 /* UITableView+TableFlip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4A15112664C3300085F968 /* UITableView+TableFlip.swift */; };
 		2A9A38C4266345C60030CFA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9A38C3266345C60030CFA4 /* AppDelegate.swift */; };
 		2A9A38C6266345C60030CFA4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9A38C5266345C60030CFA4 /* SceneDelegate.swift */; };
 		2A9A38C8266345C60030CFA4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9A38C7266345C60030CFA4 /* ViewController.swift */; };
@@ -30,6 +33,9 @@
 /* Begin PBXFileReference section */
 		2A4A14FE2664ADC60085F968 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		2A4A15022664B0940085F968 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
+		2A4A150A2664B70D0085F968 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		2A4A150D2664C1400085F968 /* UserDefaultExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultExtension.swift; sourceTree = "<group>"; };
+		2A4A15112664C3300085F968 /* UITableView+TableFlip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+TableFlip.swift"; sourceTree = "<group>"; };
 		2A9A38C0266345C60030CFA4 /* NewsFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A9A38C3266345C60030CFA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A9A38C5266345C60030CFA4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,8 +74,17 @@
 			isa = PBXGroup;
 			children = (
 				2A4A15022664B0940085F968 /* UIHelper.swift */,
+				2A4A150D2664C1400085F968 /* UserDefaultExtension.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		2A4A15102664C31E0085F968 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2A4A15112664C3300085F968 /* UITableView+TableFlip.swift */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		2A9A38B7266345C50030CFA4 = {
@@ -93,6 +108,7 @@
 		2A9A38C2266345C60030CFA4 /* NewsFeed */ = {
 			isa = PBXGroup;
 			children = (
+				2A4A15102664C31E0085F968 /* Resources */,
 				2A9A38FD266380C40030CFA4 /* ViewControllers */,
 				2A9A38E9266347600030CFA4 /* APIClient */,
 				2A9A38E3266346850030CFA4 /* ViewModel */,
@@ -121,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				2A9A38F7266370CD0030CFA4 /* APIManager.swift */,
+				2A4A150A2664B70D0085F968 /* DBManager.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -289,13 +306,16 @@
 				2A4A14FF2664ADC60085F968 /* DetailViewController.swift in Sources */,
 				2A9A38C8266345C60030CFA4 /* ViewController.swift in Sources */,
 				2A9A38E62663469D0030CFA4 /* NewsResponse.swift in Sources */,
+				2A4A15122664C3300085F968 /* UITableView+TableFlip.swift in Sources */,
 				2A9A3900266380F40030CFA4 /* NewsTableViewCell.swift in Sources */,
 				2A9A38F8266370CD0030CFA4 /* APIManager.swift in Sources */,
 				2A9A38F5266348C60030CFA4 /* Constant.swift in Sources */,
+				2A4A150E2664C1400085F968 /* UserDefaultExtension.swift in Sources */,
 				2A9A38C4266345C60030CFA4 /* AppDelegate.swift in Sources */,
 				2A9A38EF266347940030CFA4 /* EndPoints.swift in Sources */,
 				2A9A38EB266347820030CFA4 /* APIRouteConfiguration.swift in Sources */,
 				2A9A38FB26637BF10030CFA4 /* NetworkState.swift in Sources */,
+				2A4A150B2664B70D0085F968 /* DBManager.swift in Sources */,
 				2A9A38F2266347AE0030CFA4 /* SHRestClient.swift in Sources */,
 				2A9A38CE266345C60030CFA4 /* NewsFeed.xcdatamodeld in Sources */,
 				2A9A38C6266345C60030CFA4 /* SceneDelegate.swift in Sources */,

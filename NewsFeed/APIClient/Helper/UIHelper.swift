@@ -49,4 +49,22 @@ class UIHelper {
         
     }
     
+    static func animate(count : Int, tableView : UITableView) {
+        
+        let evenIndices = (0..<count).compactMap {
+            
+            return ($0 % 2 == 0) ? IndexPath(row: $0, section: 0) : nil
+        }
+        
+        let oddIndices = (0..<count).compactMap {
+            
+            return ($0 % 2 == 0) ? nil : IndexPath(row: $0, section: 0)
+        }
+        
+        let rightAnimation = TableViewAnimation.Cell.right(duration: 1.5)
+        let leftAnimation = TableViewAnimation.Cell.left(duration: 1.5)
+        tableView.animate(animation: rightAnimation, indexPaths: evenIndices, completion: nil)
+        tableView.animate(animation: leftAnimation, indexPaths: oddIndices, completion: nil)
+    }
+    
 }
